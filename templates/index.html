@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TeamLink Afiliados</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>TeamLink Afiliados</h1>
+        <form id="affiliateForm" method="POST" action="/automate">
+            <label for="productUrl">URL do Produto</label>
+            <input type="url" id="productUrl" name="productUrl" placeholder="Insira a URL do produto" required>
+            
+            <label for="platform">Selecione a Plataforma</label>
+            <select id="platform" name="platform" required>
+                <option value="Amazon">Amazon</option>
+                <option value="Casas Bahia">Casas Bahia</option>
+                <option value="Magazine Luiza">Magazine Luiza</option>
+                <option value="Natura">Natura</option>
+                <option value="Shein">Shein</option>
+                <option value="Shopee">Shopee</option>
+            </select>
+
+            <div class="resources">
+                <label>Recursos</label>
+                <button type="button" class="resource-btn" data-value="criarPostagem">Criar postagem</button>
+                <button type="button" class="resource-btn" data-value="buscarImagem">Buscar imagem</button>
+                <button type="button" class="resource-btn" data-value="publicarWhatsApp">Publicar no WhatsApp</button>
+                <button type="button" class="resource-btn" data-value="encurtarLink">Encurtar link</button>
+                <button type="button" class="resource-btn" data-value="destacar">Destacar</button>
+            </div>
+
+            <button type="submit">Finalizar automação</button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const resourceButtons = document.querySelectorAll('.resource-btn');
+            
+            resourceButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    this.classList.toggle('active');
+                });
+            });
+
+            document.getElementById('affiliateForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const productUrl = document.getElementById('productUrl').value;
+                const platform = document.getElementById('platform').value;
+                const options = Array.from(document.querySelectorAll('.resource-btn.active')).map(el => el.dataset.value);
+                
+                const formData = {
+                    productUrl,
+                    platform,
+                    options
+                };
+
+                fetch('/automate', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

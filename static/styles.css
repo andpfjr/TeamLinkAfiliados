@@ -1,0 +1,80 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5e4f2;
+    color: #5e5a5a;
+    margin: 20px;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #bd3173;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="url"], select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #bd3173;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.resources {
+    margin-top: 20px;
+}
+
+.resources label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.resource-btn {
+    display: inline-block;
+    padding: 10px 15px;
+    margin: 5px;
+    background-color: #ef52a5;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.resource-btn:hover {
+    background-color: #bd3173;
+}
+
+.resource-btn.active {
+    background-color: #ff9cce;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    margin-top: 20px;
+    background-color: #bd3173;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #b84a84;
+}
